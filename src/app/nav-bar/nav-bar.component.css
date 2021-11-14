@@ -191,7 +191,9 @@
     cursor:pointer;
 }
 .item p{
-    font-size: 15px;
+    font-size: 13px;
+    text-align: center;
+    padding-bottom:5px;
 }
 .item img{
     width:40px;

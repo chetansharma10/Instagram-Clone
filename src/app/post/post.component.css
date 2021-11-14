@@ -171,10 +171,15 @@
   }
   .data{
       background-size: contain;
-
+      height:auto;
       background-color:white;
   }
-  
+  .xs{
+      height:auto;
+  }
+  .data img{
+      object-fit: contain;
+  }
     
 }
 

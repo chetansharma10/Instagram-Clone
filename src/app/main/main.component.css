@@ -91,10 +91,11 @@
     animation-name: slideshow;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
-    animation-duration:10s;
+    animation-duration:20s;
     animation-direction: alternate-reverse;
 
-
+    background-image: url('./../../assets/1.jpg');
+    background-repeat: no-repeat;
     
 }
 @keyframes slideshow{
