@@ -1,0 +1,75 @@
+<div class="AnotherUser">
+
+    <div class="topMain">
+        <div class="lefttMain">
+
+            <img src="./../../assets/default.jpg" *ngIf="!url;">
+            <img src="{{url}}" *ngIf="url;">
+        </div>
+        <div class="righttMain">
+            <div class="nameFollow">
+                <p>{{name_user}}</p>
+
+                <button (click)="cancelRequest()" class="cancelBtn" *ngIf="pendingRequest;else other;">Cancel Request</button>    
+                <ng-template #other>
+                    <button (click)="unfollowUser()" class="unfollowBtn" *ngIf="accessGranted;else second;">Unfollow</button>
+                    <ng-template #second>
+                        <button (click)="followUser()" class="followBtn">Follow</button>
+                    </ng-template>
+                </ng-template>
+
+            </div>
+
+            <div class="postFF">
+                <p><strong>{{allUsersPosts.length}}</strong>&nbsp;posts</p>
+                <p><strong>{{no_ofFollow}}</strong>&nbsp;followers</p>
+                <p><strong>0</strong>&nbsp;following</p>         
+            </div>
+        </div>
+    </div>
+    <div class="bottomMain">
+        <div class="accessedArea" *ngIf="accessGranted;">
+            
+            <div *ngFor="let post of allUsersPosts" class="listPosts">
+
+                <div class="readPost">
+                    <div class="beforePost">
+                        <div *ngIf="!checkImageOrNot(post.postUrl);else ImageTurn;">
+                            <video class="myVi" src="{{post.postUrl}}" id="{{post.userDocId}}"
+                                (click)="togglePlay($event)" value="false"
+                            ></video>
+                        </div>
+                        <ng-template #ImageTurn>
+                            <img src={{post.postUrl}}>
+                        </ng-template>
+                    </div>
+
+                    <div class="afterPost">
+                        <div class="oneC">
+                            <img src="./../../assets/heart.png">
+                            <p>{{post.likes.length}}</p>
+                        </div>
+                        <div class="twoC">
+                            <img src="./../../assets/comment.png">
+                            <p>{{post.comments.length}}</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="nonAccessedArea" *ngIf="!accessGranted;">
+            <p>
+                <strong>This account is private</strong>
+            </p>
+            <p>
+                Follow to see their photos and<br> videos.
+            </p>
+        </div>
+    </div>
+
+  
+
+  
+</div>

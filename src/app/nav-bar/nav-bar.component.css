@@ -1,0 +1,255 @@
+.nav{
+    width:100%;
+    height:50px;
+    background-color:white;
+    border-bottom: 1px solid lightgray;
+    
+    display:flex;
+    flex-direction:row;
+    justify-content:center;
+    align-items: center;
+    
+    position:fixed;
+    top:0px;
+    z-index: 5;
+}
+
+.logoImg{
+    width:100px;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+
+    margin:auto;
+}
+.logoImg img{
+    width:101px;
+    height:35px;
+    object-fit: contain;
+    
+}
+.search{
+    width:30%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+}
+.search input{
+    background-color: #FAFAFA;
+    outline:none;
+    border:1px solid lightgray;
+    height:20px;
+    padding:10px;
+    border-radius:3px;
+    text-align: center;
+
+}
+
+.search input:focus{
+    border:1px solid rgb(156, 156, 156);
+}
+
+.search .results{
+    width:340px;
+    height:200px;
+    position:absolute;
+    background-color:white;
+    border-radius:5px;
+    top:50px;
+    
+    box-shadow: 0px 0px 6px 0px rgb(0 0 0 / 20%);
+    overflow:hidden;
+    
+}
+.search .results p{
+    font-family: sans-serif;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-top: 10px;
+}
+.search .results::before{
+    content:"";
+    width:15px;
+    height:15px;
+    background-color:white;
+    display:block;
+
+    margin:-7.5px auto;
+    transform:rotate(135deg);
+    border-bottom:1px solid lightgray;
+    border-left:1px solid lightgray;
+
+}
+
+
+.btns{
+    width:40%;
+    height:100%;
+
+    display:flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: row;
+}
+.btns .btnss{
+    margin-right: 20px;
+    cursor:pointer;
+    background-color: white !important;
+    border:none;
+}
+.btnss img{
+
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    object-position:center;
+}
+.notif{
+    background-color:rgba(255, 0, 0, 0.733);
+    border-radius: 100%;
+
+    color:transparent;
+}
+.userprofile {
+    border:1px solid black;
+}
+.userprofile img{
+    width:25px;
+    height:25px;
+    border-radius: 100%;
+    
+}
+.extraBtns{
+   position:absolute;
+   width:200px;
+   height:auto;
+   background-color: white;
+   top:50px;
+   right:12%;
+   border-radius:5px;
+   box-shadow: 0px 0px 6px 0px rgb(0 0 0 / 20%);
+    z-index: 3;
+}
+
+.profileBtn
+{
+    width:100%;
+    height:30px;
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-start;
+    align-items: center;
+    border:none;
+    font-family: sans-serif;
+    padding-left: 10px;
+    background-color:white;
+    border-bottom:1px solid lightgray;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.profileBtn:hover{
+    background-color: rgba(236, 235, 235, 0.411);
+}
+
+
+.activityBlock{
+    width:350px;
+    height:200px;
+    overflow-y: scroll;
+    background-color:white;
+    position:absolute;
+    top:55px;
+    border-radius: 10px;
+    margin-right: 10px;
+    box-shadow: 0px 0px 6px 0px rgb(0 0 0 / 20%);
+
+    
+}
+::-webkit-scrollbar{
+    display:none;
+}
+
+.item{
+    width:100%;
+    height:50px;
+    display:flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-items:center;
+    border:1px solid rgba(128, 128, 128, 0.103);
+
+    padding-left:10px;
+    margin-top:10px;
+    cursor:pointer;
+}
+.item p{
+    font-size: 15px;
+}
+.item img{
+    width:40px;
+    height: 40px;
+    border:1px solid rgba(128, 128, 128, 0.37);
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.item:hover{
+    background-color: rgba(211, 211, 211, 0.13);
+    
+}
+
+
+
+@media screen and (max-width:909px){
+    .activityBlock{
+        margin-right: 10%;
+   
+    }
+}
+@media screen and (max-width:755px){
+    .logoImg{
+        margin-left:10px;
+    }
+    .search input{
+        width:130px;
+    }
+    .activityBlock{
+        margin-right: 20%;
+    }
+}
+@media screen and (max-width:616px){
+    .activityBlock{
+        margin-right: 40%;
+
+    }
+}
+@media screen and (max-width:527px){
+    .activityBlock{
+        right: -150px;
+    }
+}
+@media screen and (max-width:515px)
+{
+    .search{
+        display:none;
+    }
+    .nav{
+        justify-content:space-between;
+    }
+    .profileBtn{
+        margin-right: 30px;
+    }
+    .btns{
+        justify-content:flex-start;
+        width:auto;
+    }
+   
+}

@@ -1,0 +1,100 @@
+<div class="xyz">
+
+
+            
+        <div *ngFor="let post of Posts">
+            <div class="post"  >
+                <div class="head">
+                    <div class="profileHead">
+
+                        <img src="./../../assets/default.jpg" *ngIf="!post.userProfileImg;else otherImg;">
+                        <ng-template #otherImg>
+                            <img src={{post.userProfileImg}} >
+                        </ng-template>
+                    
+                    </div>
+
+                    <ng-template #otherName>
+                        <ngx-skeleton-loader
+                        count="1"
+                        [theme]="{ 
+                        'border-radius': '0px',
+                        height: '20px',
+                        width:'50px',
+                        'background-color': '#868686',
+                        border: '0px solid white'
+                        }"
+                        ></ngx-skeleton-loader>
+                    </ng-template>
+                    <p style="cursor:pointer;" class="userName" *ngIf="post.whoAddPost;else otherName;" [routerLink]="['/dashboard/anotherUser', post.userDocId]">{{post.whoAddPost}}</p>
+                    
+
+
+                </div>
+
+                <ngx-skeleton-loader
+                *ngIf="loader;"
+                count="1"
+                [theme]="{ 
+                'border-radius': '0px',
+                height: '614px',
+                width:'614px',
+                'background-color': '#d3d3d32a',
+                border: '0px solid white'
+                }"
+            ></ngx-skeleton-loader>
+
+            
+                        <div class="data" 
+                            *ngIf="!loader"
+                             >
+  
+                                <video data-src="{{post.postUrl}}" controls *ngIf="!checkImageOrNot(post.postUrl);" id="{{post.userDocId}}"
+                                    (click)="togglePlay($event)" value="false"
+                                ></video>
+                         
+                                <img data-src={{post.postUrl}} *ngIf="checkImageOrNot(post.postUrl);"  id="{{post.userDocId}}"> 
+
+
+                        </div>
+                
+                      
+                
+                      
+
+
+                <div class="ExtraPostButtons">
+                    <div class="likeBtn">
+                        <img src="./../../assets/red.png" *ngIf="post.likes.includes(currentUid);else noLikes;">
+                        <ng-template #noLikes>
+                            <img src="./../../assets/redBlack.png" (click)="getPostId(post.postId)"    >
+                        </ng-template>
+                    </div>
+                </div>
+                <div class="likesList">
+                    <p>{{post.likes.length}} likes</p>
+                </div>
+                <div class="comments">
+                    <div class="listComments">
+                        <!-- <button id="showHideComments" (click)="toggleCommentsNow()">View all Comments</button> -->
+                        <div class="mycomments" *ngFor="let comment of post.comments">
+                            <!-- <li>{{comment.value}} by {{comment.commentor}}</li> -->
+                            <p class="comment"> 
+                                <strong>{{comment.commentor}}</strong>
+                                {{comment.value}}
+                            </p>
+                        </div>
+
+                    </div>
+                    
+                    <div class="addComment">
+                        <input type="text" placeholder="Add a Comment ... " (input)="commentValue=$any($event.target).value">
+                        <button (click)="addComment($event.target)"  id={{post.userDocId}} value="{{post.postId}}" >Post </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  
+
+</div>

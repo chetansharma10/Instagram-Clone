@@ -1,0 +1,84 @@
+<div *ngIf="dataLoad==false;else show;">
+    <app-loading></app-loading>
+</div>
+
+
+
+<ng-template #show>
+
+    <div class="mainBox">
+        <div class="mainLeftBox">
+            <div class="leftSide">
+
+                <div class="android">
+                    <div class="top">
+                        <div class="micro">
+                        </div>
+                    </div>
+
+                    <div class="middle">
+                        <div class="anim"></div>
+                    </div>
+
+                    <div class="bottom">
+                        <div class="btn"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="mainRightBox">
+            <div class="rightSide">
+                
+                <div class="right-top">
+
+                    <div class="logo">
+                        <img src="./../../assets/logo.png" alt=logo  />
+                    </div>
+
+                    <div class="forms">
+                        <form>
+                            <input type="email" required placeholder="Phone number,username or email address" (input)="email=$any($event.target).value">
+                            <input type="password" minlength="6" required placeholder="Password" (input)="password=$any($event.target).value"/>
+                            <button type="submit"   (click)="CallSubmit($event)" >Log In</button>
+                        </form>
+                        <div class="or">
+                            <p>OR</p>
+                        </div>
+                        <a href="#">Forgotton your password?</a>
+                        
+                        <app-spinner *ngIf="loader;else other;"></app-spinner>
+                      
+                        <ng-template #other>
+                            <small style="color:red;margin-top:10px;">{{error}}</small>
+                        </ng-template>
+                        <br>
+
+                    </div>
+
+            
+                </div>
+
+                <div class="right-bottom">
+                    <p> Don't have an account?
+                        <a routerLink="/signup">Sign up</a>
+                    </p>
+                </div>
+
+
+                <div class="getapp">
+                    <p>Get app</p>
+                    <div class="appextra">
+                        <img src="./../../assets/apple.png" class="apple">
+                        <img src="./../../assets/play.png" class="play">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+</ng-template>

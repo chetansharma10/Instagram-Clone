@@ -1,0 +1,95 @@
+<div class="inboxElm">
+
+    <div class="inboxMain">
+
+        <div class="inboxLeft">
+          
+            <div class="inboxTopL">
+                <strong>{{currentUserName}} </strong>
+            </div>
+
+            <div class="inboxContainerL" >
+                <div class="friend" *ngFor="let friend of friends" (click)="getId(friend.uid,$event.target,friend.displayName,friend.url)" >
+                    <ngx-skeleton-loader count="1" *ngIf="friendsLoaded"  appearance="circle"></ngx-skeleton-loader>
+                    
+                    <div class="iconFriend" *ngIf="!friendsLoaded">                        
+                       <img src="{{friend.url}}" >
+                    </div>
+                 
+                    <ngx-skeleton-loader
+                    count="1"
+                    [theme]="{ 
+                      'border-radius': '5px',
+                      height: '20px',
+                      width:'100px',
+                      'background-color': '#d3d3d32a',
+                      border: '0px solid white'
+                    }"
+
+                    *ngIf="namesLoaded"
+                  ></ngx-skeleton-loader>
+                    <div class="nameFriend" *ngIf="!namesLoaded">
+                        <p>{{friend.displayName}}</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="inboxRight">
+            <div class="inboxTopR">
+                <div class="iconFriendRight" style="background-image: url({{friendUrl}});">
+                 </div>
+                 <div class="nameFriendRight">
+                     <p>{{friendName}}</p>
+                 </div>
+            </div>
+            <div class="inboxContainerR">
+                <div class="chatSection" >
+                      <div *ngIf="focused;else nonFocused;" class="focusedArea" >
+                        <img src="./../../assets/mess.png">
+                        <p>
+                            Send private photos and messages to a friend or group.
+                        </p>
+                      </div>
+                      <ng-template #nonFocused>
+             
+                      <div *ngFor="let p of messagesList" class="messagesListo">
+                        
+                            <div  *ngIf="p.user===cuuid;else other;" class="lefter">
+                                
+                                <div class="boxi">
+                                        <div class="userboxi" style="background-image: url({{friendUrl}});">
+                                        </div>
+                                        <p>
+                                            {{p.value}}
+                                        </p>
+                                </div>
+
+
+                                </div>
+
+                                <ng-template #other>
+                                <div class="righter">
+                                    <div class="boxi">
+                                            <p class="xp">
+                                                {{p.value}}
+                                            </p>
+                                    </div>
+                                </div> 
+                                </ng-template>                       
+                            </div>
+                        </ng-template>
+               
+                 
+                 
+                </div>
+                <div class="inputSection">
+                    <input type="text" (input)="messageValue=$any($event.target).value" placeholder="Message ..." (keypress)="send($event)" >
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

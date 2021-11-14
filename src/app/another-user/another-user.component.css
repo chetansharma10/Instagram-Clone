@@ -1,0 +1,279 @@
+.AnotherUser{
+    margin-top:50px;
+    width:100%;
+    height:100vh;
+
+    background-color: #FAFAFA;
+
+    display:flex;
+    flex-direction: column;
+        
+}
+body{
+    background-color: #FAFAFA;
+
+}
+
+.topMain{
+    margin-top: 50px;
+    width:100%;
+    height:100px;
+    display:flex;
+    align-items: center;
+
+    justify-content:center;
+
+}
+.lefttMain{
+    width:130px;
+    height:130px;
+
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content:center;
+    margin-right: 60px;
+}
+.lefttMain img{
+    width:100%;
+    height:100%;
+    border-radius: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.righttMain{
+    width: 300px;
+    height:300px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+.nameFollow{
+    width:100%;
+    height:auto;
+    display:flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+.nameFollow p{
+    font-size: 30px;
+    font-family: sans-serif;
+}
+.nameFollow button{
+    width:80%;
+    height:28px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    cursor:pointer;
+
+    border-radius: 3px;
+    border:none;
+    color:white;
+    padding: 5px;
+
+    font-weight: bold;
+}
+.followBtn{
+    background-color: #0095F6;
+    border:1px solid #0095F6;
+
+}
+.unfollowBtn{
+    background-color: #b7c0c7;
+    border:1px solid #b7c0c7;
+    color:black;
+}
+.cancelBtn{
+    background-color: #b7c0c7;
+    border:1px solid #b7c0c7;
+    color:black;
+}
+.postFF{
+    width:100%;
+    height:auto;
+    display:flex;
+    margin-top: 30px;
+    justify-content:flex-start;
+    align-items: center;
+    
+}
+.postFF p{
+    margin-right: 30px;
+    font-family: sans-serif;
+}
+.bottomMain{
+
+    width:100%;
+    height:auto;
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    flex-direction: column;
+    margin-top: 50px;
+    background-color:#FAFAFA;
+
+}
+.nonAccessedArea{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    font-family: sans-serif;
+}
+.nonAccessedArea p:last-child{
+    font-size: 15px;
+    margin-top: 10px;
+}
+.accessedArea{
+    width:100%;
+    height:500px;
+
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content:center;
+
+}
+
+.listPosts{
+    width:100%;
+    height:500px;
+    overflow-y: scroll;
+
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    position:absolute;
+
+    
+}
+.readPost{
+    width:300px;
+    height:300px;    
+    position: relative;
+    margin:10px;
+
+
+}
+.readPost video{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    z-index: -100;
+}
+.beforePost{
+    width:100%;
+    height:100%;
+    position:absolute;
+}
+.beforePost img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    object-position: center;
+}
+.afterPost{
+    width:100%;
+    height:100%;
+    background-color:rgba(0, 0, 0, 0.253);
+    position:absolute;
+
+    display:none;
+    
+
+    margin:auto;
+
+
+}
+
+.afterPost .oneC{
+    width:50%;
+    height:30px;
+
+    position:absolute;
+    top:50%;
+    left:0%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-end;
+    align-items: center;
+    
+}
+.afterPost .twoC{
+    width:50%;
+    height:30px;
+    top:50%;
+    right:0%;
+    position:absolute;
+
+
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: center;
+
+}
+.oneC p,.twoC p{
+    font-family: sans-serif;
+    font-size: 30px;
+    color:white;
+}
+
+.oneC img{
+    width:30px;
+    height:100%;
+}
+.twoC img{
+    width:30px;
+    height:100%;
+}
+
+.readPost:hover .afterPost{
+  
+
+    display:block;
+
+
+}
+
+@media screen and (max-width:508px){
+    .topMain{
+        flex-direction: column;
+        margin-top: 100px;
+        margin-bottom:10px;
+
+    }
+    .lefttMain{
+        margin-right: 0px;
+        width:200px;
+        height:200px;
+
+        flex-direction: row;
+    }
+    .lefttMain img{
+        width:100px;
+        height:100px;
+        object-fit: cover;
+    }
+    .righttMain{
+        flex-direction:column;
+    }
+    .nameFollow{
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+    }
+    .listPosts{
+        justify-content:center;
+        flex-direction: column;
+        align-items: center;
+    }
+}

@@ -1,0 +1,31 @@
+<div class="exploreComp">
+        <ngx-skeleton-loader
+        count="{{posts.length}}"
+        [theme]="{ 
+        'border-radius': '0px',
+        height: '250px',
+        width:'250px',
+        'background-color': '#77777721',
+        'margin':'10px',
+        border: '0px solid white'
+        }"
+
+        *ngIf="showSkel;else others;"
+        ></ngx-skeleton-loader>
+
+        <ng-template #others>
+            <div class="comp" *ngFor="let post of posts">
+                
+        
+
+            
+                    <video data-src="{{post.postUrl}}#t=0.1" id="{{post.userDocId}}" *ngIf="!checkImageOrNot(post.postUrl);else ImageTurn;">
+                    </video>
+                    <ng-template #ImageTurn>
+                        <img src="{{post.postUrl}}" id="{{post.userDocId}}">
+                    </ng-template>
+            
+                
+            </div>
+        </ng-template>
+</div>

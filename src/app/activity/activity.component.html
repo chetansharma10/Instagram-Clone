@@ -1,0 +1,15 @@
+<div class="mainCorner">
+    <p class="notify"><strong>Notifications</strong></p>
+
+    <div class="elm"  *ngFor="let e of requests"> 
+        <div class="part">
+          <img src="./../../assets/default.jpg" *ngIf="!e.url;else showAnother;" >
+          <ng-template #showAnother>
+              <img src="{{e.url}}">
+          </ng-template>
+
+          <p><strong>{{e.displayName}}</strong> has sent you an <br>friend request.</p>
+          <button (click)="confirmRequest(e.uid)">Confirm</button>
+        </div>
+    </div>
+</div>s

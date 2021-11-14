@@ -1,0 +1,46 @@
+<div class="su-main">
+    <div class="su-box">
+    <div class="su-box-top">
+        <div class="su-logo">
+            <img src="./../../assets/logo.png" alt=logo >
+        </div>
+        <p class="su-title">
+            <strong>Sign up to see photos and <br>videos from your friends.
+            </strong>
+        </p>
+
+        <div class="su-or">
+            <p>OR</p>
+        </div>
+
+        <div class="su-form">
+            <form>
+                <input type="text" required placeholder="First Name" (input)="firstName=$any($event.target).value" />
+                <input type="text" required placeholder="Last Name" (input)="lastName=$any($event.target).value" />
+                <input type="email" required placeholder="Email address " (input)="email=$any($event.target).value">
+                <input type="password" minlength="6" required placeholder="Password" (input)="password=$any($event.target).value">
+                <button type="submit" (click)="signUpUser($event)">Sign Up</button>
+            </form>
+        </div>
+        <div class="su-extra">
+            By signing up, you agree to our <strong>Terms, Data<br> Policy </strong> and <strong>Cookie Policy.</strong> 
+        </div>
+
+        <div class="result">
+            <app-spinner *ngIf="signup_loader;else signupother;"></app-spinner>
+            <ng-template #signupother>
+                <small style="color:red;margin-top:10px;">{{signup_error}}</small>
+            </ng-template>
+        </div>
+
+    </div>
+
+
+    <div class="su-box-bottom">
+        <p>Have an account?</p>&nbsp;
+        <a routerLink="/login">Login</a>
+    </div>
+</div>
+</div>
+
+
