@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
 
           posts?.map((item:any,index:any)=>{
             this.dataService.readDocById("Posts",item).subscribe((res)=>{
-              console.log(res.data())
+              // console.log(res.data())
               this.lengthComments=Object(res.data()).comments.length;
               this.lengthLikes=Object(res.data()).likes.length;
               this.userPosts.push(res.data())
@@ -55,7 +55,8 @@ export class ProfileComponent implements OnInit {
 
 
         })
-      }).catch((error)=>{console.log(error.message)})
+      }).catch((error)=>{
+        console.log(error.message)})
       
     
     
@@ -114,7 +115,7 @@ export class ProfileComponent implements OnInit {
                 var progress=(snapshot?.bytesTransferred/snapshot?.totalBytes)*100;
                 this.progressValue=progress
               
-                console.log(snapshot.state);
+                // console.log(snapshot.state);
 
                 if(snapshot.state==="success"){
                   snapshot.ref.getDownloadURL().then((url)=>{
@@ -127,7 +128,7 @@ export class ProfileComponent implements OnInit {
                     this.dataService.updateDoc("Users",{
                       photoURL:url,
                     },docId).then((res)=>{
-                      console.log("Updated in Firestore")
+                      // console.log("Updated in Firestore")
                     }).catch((error)=>{console.log(error.message)})
 
                     
@@ -169,7 +170,7 @@ export class ProfileComponent implements OnInit {
              this.dataService.updateDoc("Posts",{
               userProfileImg:url,
             },doc.id).then((res)=>{
-              console.log("Updated in Firestore")
+              // console.log("Updated in Firestore")
             }).catch((error)=>{console.log(error.message)})
             
       });

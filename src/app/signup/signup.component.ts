@@ -24,7 +24,7 @@ export class SignupComponent {
 
     this.auth.signUp(this.email,this.password,this.firstName,this.lastName).
     then((res)=>{
-      console.log("Success Sign Up")
+      // console.log("Success Sign Up")
       this.signup_loader=true;
       this.addUserInFirestore(res);
     })
@@ -70,7 +70,7 @@ export class SignupComponent {
 
             var userDocId=res.id;
             this.signup_loader=false;
-            console.log("User Updated In Firebase,Success",res)
+            // console.log("User Updated In Firebase,Success",res)
             this.auth.getAuth().authState.subscribe((user)=>{
               user?.updateProfile({
                 displayName:name,
@@ -99,7 +99,7 @@ export class SignupComponent {
 
   createFriendsCollection(uid:any){
     this.dataService.getFirestore().collection("Friends").doc(uid).set({friends:[]}).then((res)=>{
-      console.log("Success created Friends ")
+      // console.log("Success created Friends ")
   
       // Requests
       this.createRequestsCollection(uid);
@@ -110,8 +110,8 @@ export class SignupComponent {
   }
   createRequestsCollection(uid:any){
       this.dataService.getFirestore().collection("Requests").doc(uid).set({requests:[]}).then((res)=>{
-        console.log("Success created Requests ")
-        console.log("Success");       
+        // console.log("Success created Requests ")
+        // console.log("Success");       
         this.createMessagesCollection(uid);   
       })
       .catch((error)=>{console.log("error",error)})
@@ -122,8 +122,8 @@ export class SignupComponent {
   createMessagesCollection(uid:any){
     var mess={}
     this.dataService.getFirestore().collection("Messages").doc(uid).set(mess).then((res)=>{
-      console.log("Success created Messages ")
-      console.log("Success");          
+      // console.log("Success created Messages ")
+      // console.log("Success");          
       this.router.navigate(["/main"])
     })
     .catch((error)=>{console.log("error")})

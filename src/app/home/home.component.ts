@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
 
       this.dataService.readDocById("Friends",res?.uid).subscribe((doc)=>{
         var obj=Object(doc.data()).friends;
-        console.log("Stories",obj)
+        // console.log("Stories",obj)
 
         for(let i=0;i<obj.length;i++){
           console.log(obj[i].uid)
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
 
          // Reading in Users
           let u=obj[i].uid;
-          console.log(u)
+          // console.log(u)
           this.dataService.getFirestore().collection("Users").ref.where("uid","==",u)
           .get().then((response)=>{
             response.forEach((story)=>{
@@ -89,24 +89,24 @@ export class HomeComponent implements OnInit {
 
     this.auth.getAuth().authState.subscribe((res)=>{
 
-      console.log("User Uid",res?.uid)
+      // console.log("User Uid",res?.uid)
       
       this.dataService.getDocIdCurrentUser("Users","uid",res?.uid)
       .then((res)=>{
         res.forEach((doc)=>{
-          console.log("Doc Id",doc.id,Object(doc.data()))
+          // console.log("Doc Id",doc.id,Object(doc.data()))
 
           // Post Upload
           this.storage.addFile("PostFiles/"+this.fileName,this.file).snapshotChanges().subscribe((snapshot)=>{
             if(snapshot){
                 var progress=(snapshot?.bytesTransferred/snapshot?.totalBytes)*100;
-                console.log(progress);
+                // console.log(progress);
                 this.progressValue=progress;
-                console.log(snapshot.state);
+                // console.log(snapshot.state);
 
                 if(snapshot.state==="success"){
                   snapshot.ref.getDownloadURL().then((url)=>{
-                    console.log(url)
+                    // console.log(url)
                      this.PostUrl=url
 
                         //*** 
@@ -123,7 +123,7 @@ export class HomeComponent implements OnInit {
 
                         this.dataService.addDoc("Posts",obj).then((post)=>{
 
-                          console.log("Post Added",post.id);
+                          // console.log("Post Added",post.id);
                           this.dataService.readDocById("Users",doc.id).subscribe((result)=>{
                             var m=Object(result.data())
                             var previousPosts=m.postsLists;
@@ -164,7 +164,7 @@ export class HomeComponent implements OnInit {
   addPostInUserCollection(Id:any,obj:any){
     
     this.dataService.updateDoc("Users",obj,Id).then((res)=>{
-      console.log("Post is added Successfully in User Collection")
+      // console.log("Post is added Successfully in User Collection")
     }).catch((error)=>{console.log(error.message)});
 
   }
@@ -212,7 +212,7 @@ export class HomeComponent implements OnInit {
                 }
               }
 
-              console.log(this.suggestList)
+              // console.log(this.suggestList)
 
             })
 

@@ -43,7 +43,7 @@ export class AnotherUserComponent implements OnInit {
         }
         else{
 
-          console.log(this.anotherUid,user?.uid)
+          // console.log(this.anotherUid,user?.uid)
           this.checking(this.anotherUid,user?.uid);
           this.readPreviousRequest(this.anotherUid);
           this.readPreviousFriends(this.anotherUid);
@@ -87,14 +87,14 @@ export class AnotherUserComponent implements OnInit {
   readPreviousRequest(anotherUserUid:any){
     this.dataService.readDocById("Requests",anotherUserUid).subscribe((doc)=>{
       this.previousRequests=Object(doc.data()).requests;
-      console.log(this.previousRequests)
+      // console.log(this.previousRequests)
     });
   }
 
   readPreviousFriends(anotherUserUid:any){
     this.dataService.readDocById("Friends",anotherUserUid).subscribe((doc)=>{
       this.previousFriends=Object(doc.data()).friends;
-      console.log(this.previousFriends)
+      // console.log(this.previousFriends)
 
     });
   }
@@ -102,7 +102,7 @@ export class AnotherUserComponent implements OnInit {
   readPreviousFriendsOfCurrentUser(currentUid:any){
     this.dataService.readDocById("Friends",currentUid).subscribe((doc)=>{
       this.previousFriendsCurrent=Object(doc.data()).friends;
-      console.log(this.previousFriendsCurrent)
+      // console.log(this.previousFriendsCurrent)
     });
   }
 
@@ -267,7 +267,7 @@ export class AnotherUserComponent implements OnInit {
 
 unfollowUser(){
 
-  console.log(this.previousFriends,this.current_uid,this.anotherUid)
+  // console.log(this.previousFriends,this.current_uid,this.anotherUid)
   //go to another uid friends and delete current uid
   
   let temp=-1;
@@ -318,7 +318,7 @@ callAnother(){
     friends:previousFriendsList2,
   },this.current_uid).then(()=>{
       this.pendingRequest=false;
-      console.log("Success prev")
+      // console.log("Success prev")
       this.accessGranted=false;
   }).catch((error)=>console.log(error))
 }
@@ -327,11 +327,11 @@ cancelRequest(){
 
   //remove current uid from another uid
 
-  console.log(this.previousRequests,this.current_uid)
+  // console.log(this.previousRequests,this.current_uid)
 
   var prev=this.previousRequests;
   if(prev.length==0){
-    console.log("Empty")
+    // console.log("Empty")
   }
   else{
     var temp=-1;
@@ -350,7 +350,7 @@ cancelRequest(){
     },this.anotherUid).then(()=>{
 
         this.pendingRequest=false;  
-        console.log("Success")
+        // console.log("Success")
     }).catch((error)=>console.log(error))
   
   }

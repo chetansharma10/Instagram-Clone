@@ -34,7 +34,7 @@ export class NavBarComponent implements OnInit {
 
       this.dataService.getFirestore().collection("Requests").doc(res?.uid).snapshotChanges().subscribe((snap)=>{
           if(snap.type==="modified"){
-            console.log(snap.payload)
+            // console.log(snap.payload)
 
             this.dataService.getFirestore().collection("Requests")
             .doc(res?.uid).get().subscribe((doc)=>{
@@ -76,7 +76,7 @@ export class NavBarComponent implements OnInit {
     if(e.code==="Enter"){
       this.searchData=[]
       if(this.searchQuery===this.username){
-        console.log("No Result Founded")
+        // console.log("No Result Founded")
       }
       else{
       this.dataService.getDocIdCurrentUser("Users","displayName",this.searchQuery)
@@ -84,7 +84,7 @@ export class NavBarComponent implements OnInit {
         res.docs.forEach((doc)=>{
          
           this.searchData.push(doc.data())
-          console.log(doc.data())
+          // console.log(doc.data())
         })
       })
       .catch((error)=>{

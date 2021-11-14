@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
 
   constructor(private authService:AuthService,private router:Router,private dataService:DataServiceService) { 
 
-    console.log("Constructor called")
+    // console.log("Constructor called")
 
 
   }
@@ -28,14 +28,14 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getAuth().onAuthStateChanged((user)=>{
       if(user){
-        console.log("Current User OnAuth Called",user)
+        // console.log("Current User OnAuth Called",user)
         this.authService.status=true
         this.dataReceive=true
 
         this.authService.go("")
       }
       else{
-        console.log("User is not there")
+        // console.log("User is not there")
         this.dataLoad=true
 
       }

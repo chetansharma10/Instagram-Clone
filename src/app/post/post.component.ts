@@ -39,7 +39,7 @@ export class PostComponent implements OnInit {
             Object.assign(obj,{"postId":change.doc.id})
             this.Posts.push(obj)
           
-            console.log("Added",change.doc.id,change.doc.data())
+            // console.log("Added",change.doc.id,change.doc.data())
 
            
             
@@ -59,7 +59,7 @@ export class PostComponent implements OnInit {
               }
             
             }
-            console.log(this.Posts[m],obj1)
+            // console.log(this.Posts[m],obj1)
             Object.assign(obj1,{"postId":change.doc.id})
 
             this.Posts[m]=obj1;
@@ -67,7 +67,9 @@ export class PostComponent implements OnInit {
             
           
           }
-          if(change.type==="removed"){console.log("Destroy")}
+          if(change.type==="removed"){
+            // console.log("Destroy")
+          }
 
       })
     });
@@ -108,7 +110,7 @@ export class PostComponent implements OnInit {
                 })
               // Add new Comment
               this.dataService.updateDoc("Posts",{comments:previousComments},postId).then((res)=>{
-                console.log("Success Comment Added")
+                // console.log("Success Comment Added")
               }).catch((error)=>console.log("error in comments"))
 
           });
@@ -146,7 +148,10 @@ export class PostComponent implements OnInit {
         allLikes.push(currentId)
         this.dataService.updateDoc("Posts",{
           likes:allLikes,
-        },id).then(()=>{console.log("Likes Add")}).catch((error)=>console.log(error.message))
+        },id).then(()=>{
+          // console.log("Likes Add")
+        
+        }).catch((error)=>console.log(error.message))
 
 
 

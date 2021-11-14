@@ -35,7 +35,7 @@ export class InboxComponent implements OnInit {
    
       this.dataService.getFirestore().collection("Messages").doc(user?.uid).snapshotChanges().subscribe
       ((change)=>{
-        console.log(change.type,change.payload)
+        // console.log(change.type,change.payload)
         if(this.friendId.length>0){
           // this.messagesList=[]
           this.fetchAllMessages(this.friendId,this.cuuid)
@@ -48,7 +48,7 @@ export class InboxComponent implements OnInit {
               
             var obj=Object(doc.data()).friends;
               obj.forEach((doc:any)=>{
-                console.log(doc)
+                // console.log(doc)
                 this.friends.push(doc)
                 
               })
@@ -67,7 +67,7 @@ export class InboxComponent implements OnInit {
   }
 
   addField(id:any,e:any){
-    console.log("friend Uid",id,"current Uid",this.cuuid,this.allConversations)
+    // console.log("friend Uid",id,"current Uid",this.cuuid,this.allConversations)
     // this.messageValue=""
     // e.target.parentNode.children[0].value="";
     var date=new Date();
@@ -77,13 +77,13 @@ export class InboxComponent implements OnInit {
       timestamp:`${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
     }
-    console.log(addedMessage)
+    // console.log(addedMessage)
 
     let temp=-1;
     if(this.allConversations.length>0){
      
       for(let i=0;i<this.allConversations.length;i++){
-        console.log(this.allConversations[i])
+        // console.log(this.allConversations[i])
         if(this.allConversations[i].uid===this.cuuid){
           temp=i
           break;
@@ -92,7 +92,7 @@ export class InboxComponent implements OnInit {
 
 
       if(temp!=-1){
-        console.log("No Equal to -1")
+        // console.log("No Equal to -1")
         var messagesList=this.allConversations[temp].messages;
         var newMessagesList=[...messagesList,addedMessage]
 
@@ -103,7 +103,9 @@ export class InboxComponent implements OnInit {
           conversations:this.allConversations,
     
         },id).then
-        ((res)=>{console.log("Succes Message Added if one")})
+        ((res)=>{
+          // console.log("Succes Message Added if one")
+        })
         .catch((error)=>{console.log(error.message)});
 
       }
@@ -120,7 +122,9 @@ export class InboxComponent implements OnInit {
           conversations:newConv,
     
         },id).then
-        ((res)=>{console.log("Succes Message Added else one")})
+        ((res)=>{
+          // console.log("Succes Message Added else one")
+        })
         .catch((error)=>{console.log(error.message)});
       }
 
@@ -139,7 +143,10 @@ export class InboxComponent implements OnInit {
         ],
   
       },id).then
-      ((res)=>{console.log("Succes Message Added second else")})
+      ((res)=>{
+        
+        // console.log("Succes Message Added second else")
+      })
       .catch((error)=>{console.log(error.message)});
 
 
@@ -188,7 +195,7 @@ export class InboxComponent implements OnInit {
       if(docs.exists){
         var x=Object(docs.data()).conversations
         if(x===undefined){
-          console.log("Undefined First")
+          // console.log("Undefined First")
           this.allConversations=[]
         }
         else{
@@ -199,7 +206,7 @@ export class InboxComponent implements OnInit {
         }
       }
       else{
-        console.log("Doc Not exists")
+        // console.log("Doc Not exists")
       }
     });
 
@@ -208,10 +215,10 @@ export class InboxComponent implements OnInit {
      
       if(docs.exists){
         var x=Object(docs.data()).conversations
-        console.log("Another User",x)
+        // console.log("Another User",x)
 
         if(x===undefined){
-          console.log("Undefined First")
+          // console.log("Undefined First")
           this.anotherConversations=[]
         }
         else{
@@ -222,7 +229,7 @@ export class InboxComponent implements OnInit {
         }
       }
       else{
-        console.log("Doc Not exists")
+        // console.log("Doc Not exists")
       }
     });
 
@@ -254,7 +261,7 @@ export class InboxComponent implements OnInit {
       var allMessages=this.allConversations[temp].messages
       for(let i=0;i<allMessages.length;i++){
         var index=this.messagesList.findIndex((l:any)=>l.timestamp===allMessages[i].timestamp)
-        console.log(index)
+        // console.log(index)
 
         if(index===-1){
           var target=Object.assign(allMessages[i],{dir:'left'})
@@ -284,7 +291,7 @@ export class InboxComponent implements OnInit {
       var allMessages=this.anotherConversations[temp].messages
       for(let i=0;i<allMessages.length;i++){
         var index=this.messagesList.findIndex((l:any)=>l.timestamp===allMessages[i].timestamp)
-        console.log(index)
+        // console.log(index)
         
         if(index===-1){
           var target=Object.assign(allMessages[i],{dir:'right'})

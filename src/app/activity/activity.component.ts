@@ -47,7 +47,7 @@ export class ActivityComponent implements OnInit {
 
 
   confirmRequest(elm:any){
-    console.log(elm)
+    // console.log(elm)
     let temp=-1;
     for(let i=0;i<=this.requests.length;i++){
       if(this.requests[i].uid===elm){
@@ -72,7 +72,7 @@ export class ActivityComponent implements OnInit {
         this.dataService.updateDoc("Requests",{requests:prevReq},this.current_uid)
         .then(()=>{
           
-          console.log("success")
+          // console.log("success")
 
           //Update Another User Also
           this.dataService.getDocIdCurrentUser("Users","uid",this.current_uid)
@@ -89,10 +89,10 @@ export class ActivityComponent implements OnInit {
               this.dataService.readDocById("Friends",elm).subscribe
               (resp=>{
                 var details=Object(resp.data()).friends;
-                console.log(details,this.current_uid,x)
+                // console.log(details,this.current_uid,x)
                 details.push(x);
                 this.dataService.updateDoc("Friends",{friends:details},elm).then((res)=>{
-                  console.log("Success In Friends")
+                  // console.log("Success In Friends")
                 }).catch((error)=>console.log(error))
 
               })
