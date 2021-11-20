@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
   storiesLoaded:boolean=true;
   suggestList:any=[]
 
+
+  dark:any=[]
   stories:any=[];
   constructor(private auth:AuthService,private router:Router,private dataService:DataServiceService,private storage:StorageService) { }
 
@@ -59,13 +61,16 @@ export class HomeComponent implements OnInit {
         }
 
         setTimeout(()=>{this.storiesLoaded=false;},2000);
-        this.showSuggestions();
       });
 
 
 
     })
   
+    this.showSuggestions();
+    
+
+
   
   }
 
@@ -198,21 +203,28 @@ export class HomeComponent implements OnInit {
 
               for(let k=0;k<allFriendsUids.length;k++){
                 if(allFriendsUids[k]!=userId){
+                
                   var cx=currFriendUids.includes(allFriendsUids[k])
                   if(cx){
                     continue;
                   }
                   else{
-                    
-                      this.suggestList.push(allFriends[k])
-  
-                    
+                      for(let m=0;m<allFriends.length;m++){
+                        if(allFriends[m].uid!=allFriendsUids[k]){
+                        this.suggestList.push(allFriends[k])
+                          break;
+                        }
+                      }
                   }
+                  // 
   
                 }
-              }
 
-              // console.log(this.suggestList)
+
+
+              }
+            
+
 
             })
 
@@ -227,6 +239,10 @@ export class HomeComponent implements OnInit {
 
         });
     });
+
+   
+   
+   
 
   }
 
