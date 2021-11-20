@@ -67,7 +67,7 @@ export class AuthService {
       this.isProfile=false;
       
       this.router.navigate(["dashboard/home"])
-
+     
     }
     if(id=="explore")
     {

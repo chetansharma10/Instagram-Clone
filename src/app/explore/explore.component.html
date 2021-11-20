@@ -1,5 +1,7 @@
 <div class="exploreComp">
         <ngx-skeleton-loader
+    
+        class="exploreComp"
         count="{{posts.length}}"
         [theme]="{ 
         'border-radius': '0px',
@@ -9,7 +11,7 @@
         'margin':'10px',
         border: '0px solid white'
         }"
-
+       
         *ngIf="showSkel;else others;"
         ></ngx-skeleton-loader>
 
