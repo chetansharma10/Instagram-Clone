@@ -13,7 +13,9 @@ body{
     background-color: #FAFAFA;
 
 }
-
+::-webkit-scrollbar {
+    display: none;
+}
 .topMain{
     margin-top: 50px;
     width:100%;

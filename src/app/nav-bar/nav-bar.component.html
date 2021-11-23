@@ -9,7 +9,7 @@
             <!-- Search Result Here -->
             <div *ngFor="let x of searchData">
                 
-                <div class="item" (click)="goToProfile(x.uid)">
+                <div class="item" [routerLink]="['/dashboard/anotherUser', 'unknown21'+x.uid]">
 
                     <img src="{{x.photoURL}}" *ngIf="x.photoURL.length>0;else othe;">
                     <ng-template #othe>

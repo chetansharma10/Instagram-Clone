@@ -59,6 +59,7 @@ export class NavBarComponent implements OnInit {
 
     });
 
+    
 
 
 
@@ -84,7 +85,8 @@ export class NavBarComponent implements OnInit {
         res.docs.forEach((doc)=>{
          
           this.searchData.push(doc.data())
-          // console.log(doc.data())
+          
+       
         })
       })
       .catch((error)=>{
@@ -99,6 +101,8 @@ export class NavBarComponent implements OnInit {
   }
 
   visit(id:any){
+
+  
     this.authService.go(id);
     this.showHide.normalizeVisible();
 
@@ -116,7 +120,8 @@ export class NavBarComponent implements OnInit {
   }
 
   goToProfile(e:any){
-    this.router.navigate(["/dashboard/anotherUser/"+e])
+    
+    this.router.navigate(["/dashboard/anotherUser/unknown"+e])
     this.toggleResults();
   }
 

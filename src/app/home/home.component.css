@@ -82,7 +82,7 @@
     align-items: center;
 }
 .xelm{
-    width:100px;
+    width:90px;
     height:100%;
 
     
@@ -122,7 +122,12 @@
     font-family: sans-serif;
     font-size:12px;
 }
-
+.hide{
+    display:none;
+}
+.show{
+    display:block;
+}
 
 
 
@@ -136,6 +141,7 @@ progress::-webkit-progress-bar {background-color: white; width: 100%;}
     border:none;
     color: #008afc !important;
     background-color: #008afc !important;
+    transition:1s ease-in-out;
 
 }
 
@@ -192,9 +198,17 @@ progress::-webkit-progress-bar {background-color: white; width: 100%;}
     border:1px solid #0095F6;
 
     font-weight: bold;
+    height:30px;
 
+    
+    
 }
-
+.xp{
+    width:100%;
+    height:100%;
+    color:white;
+    
+}
 
 
 
@@ -281,7 +295,7 @@ progress::-webkit-progress-bar {background-color: white; width: 100%;}
 
 .suggest {
     width:100%;
-    height:400px;
+    height:auto;
     /* border:1px solid red; */
 
     display:flex;
@@ -346,6 +360,37 @@ progress::-webkit-progress-bar {background-color: white; width: 100%;}
 }
 .posts{
     width:100%;height:100%;
+}
+
+.extras{
+    width:100%;
+    height:100px;
+    /* border:1px solid black; */
+    margin-top:30px;
+}
+.extrasDetails{
+    display:flex;
+    flex-direction:row;
+    font-size:12px;
+   
+    font-family: sans-serif;
+}
+.extrasDetails a{
+    color:rgba(90, 90, 90, 0.527);
+    text-decoration: none;
+    margin-right:10px;
+}
+.copy{
+    color:rgba(90, 90, 90, 0.527);
+
+    font-family: sans-serif;
+    font-size:10px;
+
+    display:flex;flex-direction:row;
+    align-items:center;
+    width:100%;
+    height:50px;
+
 }
 
 

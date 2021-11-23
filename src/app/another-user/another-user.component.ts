@@ -27,35 +27,56 @@ export class AnotherUserComponent implements OnInit {
   name_user:string="";
   url:any="";
   no_ofFollow:any=0;
+  isStartwithUnk:boolean=false;
 
   constructor(private auth:AuthService,private router:Router,private dataService:DataServiceService) { }
 
   ngOnInit(): void {
-
-    this.dataService.readDocById("Users",this.userDocId).subscribe((doc)=>{
-      var obj=Object(doc.data());
-      this.anotherUid=obj.uid;
-
+    if(this.userDocId.startsWith("unknown21")){
+      this.userDocId=this.userDocId.split("unknown21")[1]
+      this.anotherUid=this.userDocId;
+      this.isStartwithUnk=true;
       this.auth.getAuth().authState.subscribe((user)=>{
         this.current_uid=user?.uid;
+       
         if(user?.uid===this.anotherUid){
           this.auth.go("Profile");
         }
         else{
 
-          // console.log(this.anotherUid,user?.uid)
+          // console.log(typeof(this.anotherUid),user?.uid)
           this.checking(this.anotherUid,user?.uid);
           this.readPreviousRequest(this.anotherUid);
           this.readPreviousFriends(this.anotherUid);
           this.readPreviousFriendsOfCurrentUser(this.current_uid);
         }
       });
+  
+    }
+    else{
+      this.dataService.readDocById("Users",this.userDocId).subscribe((doc)=>{
+        var obj=Object(doc.data());
+        this.anotherUid=obj.uid;
 
-   
+        this.auth.getAuth().authState.subscribe((user)=>{
+          this.current_uid=user?.uid;
+          if(user?.uid===this.anotherUid){
+            this.auth.go("Profile");
+          }
+          else{
 
-   
-    });
+          // console.log(typeof(this.anotherUid),user?.uid)
+            this.checking(this.anotherUid,user?.uid);
+            this.readPreviousRequest(this.anotherUid);
+            this.readPreviousFriends(this.anotherUid);
+            this.readPreviousFriendsOfCurrentUser(this.current_uid);
+          }
+        });
 
+  
+    
+      });
+  }
 
   
   }
@@ -132,7 +153,45 @@ export class AnotherUserComponent implements OnInit {
   
         if(isFoundInFriends){
           this.accessGranted=true;
+          if(this.isStartwithUnk){
+            this.dataService.getDocIdCurrentUser("Users","uid",this.anotherUid)
+            .then((doc)=>{
+              doc.forEach((d)=>{
 
+                  var obj=Object(d.data())
+                  
+                  this.name_user=obj.displayName;
+                  this.url=obj.photoURL;
+                  var userId=obj.uid;
+                  var postsL=obj.postsLists;
+      
+                  postsL.map((item:any)=>{
+      
+                    this.dataService.readDocById("Posts",item).subscribe((dc)=>{
+                     var obj1=Object(dc.data());
+                     this.allUsersPosts.push(obj1)
+                    });
+      
+                  });
+      
+      
+                  this.dataService.readDocById("Friends",userId).subscribe((dc)=>{
+                    var obj1=Object(dc.data()).friends;
+      
+                    this.no_ofFollow=obj1.length;
+                    
+                   });
+               
+      
+
+
+
+
+
+              })
+            })
+          }
+          else{
           this.dataService.readDocById("Users",this.userDocId).subscribe((doc)=>{
             var obj=Object(doc.data());
 
@@ -162,7 +221,7 @@ export class AnotherUserComponent implements OnInit {
 
 
           });
-
+          }//end else
 
           
 
@@ -247,7 +306,8 @@ export class AnotherUserComponent implements OnInit {
       },this.anotherUid).then(()=>{
 
           this.pendingRequest=true;  
-          console.log("Success")
+          // console.log("Success")
+
       }).catch((error)=>console.log(error));
 
 
@@ -285,7 +345,7 @@ unfollowUser(){
     friends:previousFriendsList,
   },this.anotherUid).then(()=>{
       this.pendingRequest=false;
-      console.log("Success")
+      // console.log("Success")
       this.accessGranted=false;
 
       this.callAnother()

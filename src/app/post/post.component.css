@@ -20,6 +20,11 @@
     align-items: center;
 
 }
+
+.head p:hover{
+    border-bottom:1px solid black;
+}
+
 .profileHead{
     width:30px;
     height:30px;

@@ -18,9 +18,14 @@
                                 </button>
                             </div>
                         </div>
-                        <button class="ubtn" (click)="addPost()">
-                            Upload
+
+                        <button [ngClass]="{show:showUploadBtn===true,hide:showUploadBtn===false}" class="ubtn" (click)="addPost()" >
+                            <span class="xp"*ngIf="showAnim"  >
+                                Loading...
+                            </span>
+                            <span *ngIf="!showAnim">Upload</span>
                         </button>
+                        
                     </div>
 
                     <div *ngFor="let story of stories" >
@@ -108,6 +113,17 @@
                     </div>
                     
                 
+            </div>
+        </div>
+
+        <div class="extras">
+            <div class="extrasDetails">
+                <a href="https://github.com/chetansharma10/">About</a>
+                <a href="https://github.com/chetansharma10/Instagram-Clone">Help</a>
+                <a href="https://github.com/chetansharma10/">Support & Others</a>
+            </div>
+            <div class="copy">
+                &copy;2021 INSTAGRAM CLONE COPYRIGHT
             </div>
         </div>
     </div>

@@ -21,8 +21,9 @@ export class HomeComponent implements OnInit {
   emailName!:any;
   storiesLoaded:boolean=true;
   suggestList:any=[]
-
-
+  currentTimeInterval!:any;
+  showAnim:boolean=false;
+  showUploadBtn:boolean=false;
   dark:any=[]
   stories:any=[];
   constructor(private auth:AuthService,private router:Router,private dataService:DataServiceService,private storage:StorageService) { }
@@ -39,7 +40,8 @@ export class HomeComponent implements OnInit {
         // console.log("Stories",obj)
 
         for(let i=0;i<obj.length;i++){
-          console.log(obj[i].uid)
+          // console.log(obj[i].uid)
+          
         
 
          // Reading in Users
@@ -83,7 +85,7 @@ export class HomeComponent implements OnInit {
     if(fileX){
       this.fileName=fileX.name;
       this.file=fileX;
-
+      this.showUploadBtn=true;
     }//end of if
 
   }
@@ -93,7 +95,7 @@ export class HomeComponent implements OnInit {
     
 
     this.auth.getAuth().authState.subscribe((res)=>{
-
+      this.showAnim=true;
       // console.log("User Uid",res?.uid)
       
       this.dataService.getDocIdCurrentUser("Users","uid",res?.uid)
@@ -104,10 +106,15 @@ export class HomeComponent implements OnInit {
           // Post Upload
           this.storage.addFile("PostFiles/"+this.fileName,this.file).snapshotChanges().subscribe((snapshot)=>{
             if(snapshot){
-                var progress=(snapshot?.bytesTransferred/snapshot?.totalBytes)*100;
-                // console.log(progress);
-                this.progressValue=progress;
-                // console.log(snapshot.state);
+                // var progress=(snapshot?.bytesTransferred/snapshot?.totalBytes)*100;
+                // this.progressValue=progress;
+
+            
+                  var progress=(snapshot?.bytesTransferred/snapshot?.totalBytes)*100;
+                  console.log(progress);
+                  this.progressValue=progress;
+                  
+           
 
                 if(snapshot.state==="success"){
                   snapshot.ref.getDownloadURL().then((url)=>{
@@ -135,12 +142,12 @@ export class HomeComponent implements OnInit {
                             previousPosts.push(post.id)
                             this.addPostInUserCollection(doc.id,{postsLists:previousPosts})
                             this.progressValue=0
-
+                            this.showAnim=false;
 
                               // Add Post ID
                             // this.dataService.updateDoc("Posts",{postId:post.id},post.id).then((res)=>{console.log("Updated Post Id ")})
                             // .catch((error)=>console.log(error.message))
-
+                            this.showUploadBtn=false;
 
                           })
 
@@ -216,7 +223,7 @@ export class HomeComponent implements OnInit {
                         }
                       }
                   }
-                  // 
+                  
   
                 }
 

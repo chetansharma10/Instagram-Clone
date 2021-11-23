@@ -11,9 +11,11 @@
             <div class="inboxContainerL" >
                 <div class="friend" *ngFor="let friend of friends" (click)="getId(friend.uid,$event.target,friend.displayName,friend.url)" >
                     <ngx-skeleton-loader count="1" *ngIf="friendsLoaded"  appearance="circle"></ngx-skeleton-loader>
-                    
-                    <div class="iconFriend" *ngIf="!friendsLoaded">                        
-                       <img src="{{friend.url}}" >
+                    <div class="iconFriend" *ngIf="!friendsLoaded">  
+                        
+                       <img src="{{friend.url}}"  >
+                                          
+                       
                     </div>
                  
                     <ngx-skeleton-loader
