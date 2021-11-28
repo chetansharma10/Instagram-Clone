@@ -27,6 +27,7 @@
               "src/assets"
             ],
             "styles": [
+            "/home/chetan/Desktop/Angular App/myapp/node_modules/@ctrl/ngx-emoji-mart/picker.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -37,7 +38,7 @@
                 {
                   "type": "initial",
                   "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",

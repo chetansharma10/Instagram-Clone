@@ -1,0 +1,34 @@
+.errorHandler{
+    position:fixed;
+    width:100%;
+    height:auto;
+    bottom:0px;
+    border:1px solid black;
+    background-color:rgba(0, 0, 0, 0.849);
+    font-family: sans-serif;
+    transition: 1s ease;
+    opacity:1;
+
+    z-index:10;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.errorHandler p{
+    color:white;
+    margin: 10px;
+    padding-left:10px;
+    
+    
+}
+.errorHandler button{
+    color:#0095F6;
+    background-color: transparent;
+    outline:none;
+    border:none;
+    cursor:pointer;
+    margin:10px;
+    padding-right: 10px;
+    font-weight:bolder;
+
+}

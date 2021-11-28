@@ -75,7 +75,7 @@ export class MainComponent implements OnInit {
               this.error="Please fill the fields correctly."
             }
             else{
-            this.error="Invalid Password"}
+            this.error="Invalid Email or Password"}
           }
           
         })

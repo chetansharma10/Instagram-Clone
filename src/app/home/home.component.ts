@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
               }
               this.stories.push(x);  
             });
-          }).catch((error)=>console.log(error))
+          }).catch((error)=>console.log("Line 60 Home",error))
           //End Reading in Users
 
         }
@@ -151,7 +151,7 @@ export class HomeComponent implements OnInit {
 
                           })
 
-                        }).catch((error)=>console.log(error));
+                        }).catch((error)=>console.log("Line 154 Home",error));
 
                         //***
 
@@ -177,7 +177,7 @@ export class HomeComponent implements OnInit {
     
     this.dataService.updateDoc("Users",obj,Id).then((res)=>{
       // console.log("Post is added Successfully in User Collection")
-    }).catch((error)=>{console.log(error.message)});
+    }).catch((error)=>{console.log("Line 180 Home",error.message)});
 
   }
 

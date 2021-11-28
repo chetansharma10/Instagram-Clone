@@ -123,7 +123,8 @@ progress::-webkit-progress-bar {background-color: white; width: 100%;}
 
 
 .profileBottom{
-    width:914px;
+    /* width:914px; */
+    width:100%;
     height:auto;
     border-top: 1px solid lightgray;
 

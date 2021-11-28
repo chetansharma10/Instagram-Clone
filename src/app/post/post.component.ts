@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { identity } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { DataServiceService } from '../data-service.service';
 
@@ -121,7 +122,22 @@ export class PostComponent implements OnInit {
 
   }
 
+  runAnim(event:any,id:any){
+    var x=event.target.firstChild.getAttribute("class")
 
+    if(x=="hide"||x==undefined){
+      event.target.firstChild.setAttribute('class',"heartDiv")
+      this.getPostId(id);
+
+      setTimeout(()=>{
+        event.target.setAttribute('class',"hide2")
+
+      },2000);
+
+    }
+    
+   
+  }
   
   getPostId(x:any){
     this.checkUserInLikes(x)

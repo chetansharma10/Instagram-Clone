@@ -29,6 +29,8 @@ import { ActivityComponent } from './activity/activity.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { PickerModule } from '@ctrl/ngx-emoji-mart';
+import { ErrorHandlerComponent } from './error-handler/error-handler.component';
 //End  Firebase Section
 
 
@@ -51,13 +53,15 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     ActivityComponent,
     AddPostComponent,
     InboxComponent,
+    ErrorHandlerComponent,
     
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-
+    PickerModule,
+ 
 
     //Initialize App
     AngularFireModule.initializeApp(environment.firebase),

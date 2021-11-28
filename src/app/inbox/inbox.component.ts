@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { DataServiceService } from '../data-service.service';
@@ -9,6 +9,11 @@ import { DataServiceService } from '../data-service.service';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent implements OnInit {
+
+  @ViewChild('elm') elm!:ElementRef;
+  @ViewChild('inp') inp!:ElementRef;
+
+  showEmojis:boolean=false;
   friends:any=[]
   messagesList:any=[]
   messageValue:string="";
@@ -28,6 +33,11 @@ export class InboxComponent implements OnInit {
 
   constructor(private dataService:DataServiceService,private auth:AuthService,private router:Router) { }
   ngOnInit(): void {
+
+
+
+   
+  
    this.auth.getAuth().authState.subscribe((user)=>{
     
       this.cuuid=user?.uid;
@@ -68,6 +78,8 @@ export class InboxComponent implements OnInit {
           });
 
       });
+
+     
 
 
      
@@ -211,6 +223,10 @@ export class InboxComponent implements OnInit {
         this.allConversations=Object(docs.data()).conversations;
 
         this.showReadMessages();
+        setTimeout(()=>{
+          this.elm.nativeElement.scrollTop = this.elm.nativeElement.scrollHeight;
+        },1000)
+
        
         }
       }
@@ -235,12 +251,20 @@ export class InboxComponent implements OnInit {
 
         this.showReadMessagesSecond();
         
+          this.elm.nativeElement.scrollTop = this.elm.nativeElement.scrollHeight;
+         
+        
         }
       }
       else{
         // console.log("Doc Not exists")
       }
     });
+
+
+    
+
+
 
 
 
@@ -316,8 +340,13 @@ export class InboxComponent implements OnInit {
   
   }
 
-  
+  addEmoji(event:any){
+    this.messageValue=this.messageValue+event.emoji.native;
+    this.inp.nativeElement.value=this.messageValue;
+  }
 
-
+  toggleEmojis(){
+    this.showEmojis=!this.showEmojis;
+  }
 
 }
